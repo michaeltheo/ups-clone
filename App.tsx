@@ -2,15 +2,18 @@ import { StatusBar } from 'expo-status-bar';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import {TailwindProvider} from 'tailwind-rn';
 import utilities from './tailwind.json';
+import { NavigationContainer } from '@react-navigation/native';
 import CustomerScreen from './src/screens/customerScreen'
 
 export default function App() {
   return (
     // @ts-ignore
     <TailwindProvider utilities={utilities}>
+      <NavigationContainer>
       <View style={styles.droidSafeArea}>
       <CustomerScreen/>
       </View>
+      </NavigationContainer>
   </TailwindProvider>
   );
 }
