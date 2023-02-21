@@ -1,12 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, Text, View } from 'react-native';
+import {TailwindProvider} from 'tailwind-rn';
+import utilities from './tailwind.json';
+import CustomerScreen from './src/screens/customerScreen'
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    // @ts-ignore
+    <TailwindProvider utilities={utilities}>
+      <View style={styles.droidSafeArea}>
+      <CustomerScreen/>
+      </View>
+  </TailwindProvider>
   );
 }
 
@@ -17,4 +22,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  droidSafeArea: {
+    flex: 1,
+    paddingTop: Platform.OS === 'android' ? 25 : 0
+}
 });
