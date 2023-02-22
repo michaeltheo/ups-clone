@@ -18,7 +18,7 @@ const RootNavigator = () => {
   return (
     <Stack.Navigator>
         <Stack.Group>
-    <Stack.Screen name='main' component={NavigatorTab}></Stack.Screen>
+    <Stack.Screen  name='Main' component={NavigatorTab}></Stack.Screen>
         </Stack.Group>
     </Stack.Navigator>
   )

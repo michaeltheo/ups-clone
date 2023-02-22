@@ -1,11 +1,56 @@
 import { View, Text } from 'react-native'
-import React from 'react'
+import React, { useLayoutEffect } from 'react'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import CustomerScreen from '../screens/customerScreen'
+import OrderScreen from '../screens/OrderScreen'
+import { useNavigation } from '@react-navigation/native'
+import { Icon } from '@rneui/themed';
+
+export type TabStackParamsList={
+  Customer:undefined,
+  Orders:undefined
+}
+const Tab=createBottomTabNavigator<TabStackParamsList>()
+
 
 const NavigatorTab = () => {
+  const navigation=useNavigation()
+
+  useLayoutEffect(()=>{
+    navigation.setOptions(
+      {
+        headerShown:false
+      }
+    )
+  },[])
   return (
-    <View>
-      <Text>NavigatorTab</Text>
-    </View>
+    <Tab.Navigator
+    screenOptions={({route})=>({
+      tabBarActiveTintColor:"#59C1CC",
+      tabBarInactiveTintColor:"gray",
+      tabBarIcon: ({focused,color,size})=>{
+        if(route.name==='Customer'){
+          return(
+            <Icon 
+            name="users"
+            type='entypo'
+            color={focused ? "#59C1CC" : "gray"}/>
+          )
+        }
+        else if (route.name==='Orders'){
+          return(
+            <Icon 
+            name="inbox"
+            type=' AntDesign'
+            color={focused ? "#59C1CC" : "gray"}/>
+          )
+        }
+      }
+    })}
+    >
+      <Tab.Screen  name='Customer' component={CustomerScreen}></Tab.Screen>
+      <Tab.Screen name='Orders' component={OrderScreen}></Tab.Screen>
+    </Tab.Navigator>
   )
 }
 

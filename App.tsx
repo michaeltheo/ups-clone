@@ -4,15 +4,15 @@ import {TailwindProvider} from 'tailwind-rn';
 import utilities from './tailwind.json';
 import { NavigationContainer } from '@react-navigation/native';
 import CustomerScreen from './src/screens/customerScreen'
+import RootNavigator from './src/navigator/RootNavigator';
 
 export default function App() {
   return (
     // @ts-ignore
     <TailwindProvider utilities={utilities}>
       <NavigationContainer>
-      <View style={styles.droidSafeArea}>
-      <CustomerScreen/>
-      </View>
+     <RootNavigator/>
+    
       </NavigationContainer>
   </TailwindProvider>
   );
