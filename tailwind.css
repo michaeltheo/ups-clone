@@ -52,12 +52,12 @@
   padding-right: 2.5rem
 }
 
-.pt-5 {
-  padding-top: 1.25rem
-}
-
 .pb-0 {
   padding-bottom: 0px
+}
+
+.pt-5 {
+  padding-top: 1.25rem
 }
 
 .uppercase {
